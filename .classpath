@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/fluent-hc-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpclient-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpclient-cache-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpclient-osgi-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpclient-win-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpcore-4.4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/httpmime-4.5.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/jna-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sidney/workspace/Financeiro/Lib/jna-platform-4.5.2.jar"/>
+	<classpathentry kind="lib" path="Lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

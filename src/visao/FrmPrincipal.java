@@ -11,6 +11,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmPrincipal extends JFrame {
 
@@ -38,7 +40,14 @@ public class FrmPrincipal extends JFrame {
 	public FrmPrincipal() {
 		setTitle("Controle de Caixa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(450, 200, 754, 477);
+		
+		setExtendedState(MAXIMIZED_BOTH);
+		
+		//setBounds(450, 200, 754, 477);
+		
+		
+		
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -69,7 +78,31 @@ public class FrmPrincipal extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		
+		
+		// Evento OnClick do Lancamento de Caixa
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JIFrmListaMovimento jifFrmListaMovimento = new JIFrmListaMovimento(); 
+
+				
+				jifFrmListaMovimento.setVisible( true );
+				desktopPane.add(jifFrmListaMovimento);
+				
+				
+				
+				
+			}
+		});
+		
+		
+
+		
 		panel_1.add(desktopPane, BorderLayout.CENTER);
+		
+		
+		
 		
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
