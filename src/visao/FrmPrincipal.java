@@ -58,8 +58,7 @@ public class FrmPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Consulta");
 		mnCaixa.add(mntmNewMenuItem);
 		
-		JMenuItem mntmLanamento = new JMenuItem("Lan\u00E7amento");
-		mnCaixa.add(mntmLanamento);
+		
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Altera\u00E7\u00E3o");
 		mnCaixa.add(mntmNewMenuItem_1);
@@ -97,6 +96,18 @@ public class FrmPrincipal extends JFrame {
 		});
 		
 		
+		
+		JMenuItem mntmLanamento = new JMenuItem("Lan\u00E7amento");
+		mntmLanamento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrmLancCaixa frmLancCaixa = new FrmLancCaixa();
+				frmLancCaixa.setVisible( true );
+				desktopPane.add( frmLancCaixa );
+			}
+		});
+		mnCaixa.add(mntmLanamento);
+		
+		
 
 		
 		panel_1.add(desktopPane, BorderLayout.CENTER);
@@ -109,4 +120,10 @@ public class FrmPrincipal extends JFrame {
 		flowLayout_1.setVgap(20);
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 	}
+	
+	
+	
+	
+	
+	
 }

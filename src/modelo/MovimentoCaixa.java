@@ -3,24 +3,31 @@ package modelo;
 public class MovimentoCaixa {
 	
 	private int id; 
-	private String data; 
+	private Caixa caixa; 
 	private String conta; 
 	private String operacao; 
 	private String historico; 
 	private String valor; 
 	private int usuario; 
 	private String doc;
+	
+	
+	public MovimentoCaixa() { 
+		this.caixa = new Caixa();  
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getData() {
-		return data;
+	public Caixa getCaixa() {
+		return caixa;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setCaixa(Caixa caixa ) {
+		this.caixa = caixa;
 	}
 	public String getConta() {
 		return conta;

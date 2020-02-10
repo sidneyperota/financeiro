@@ -11,5 +11,14 @@ public class MovimentoCaixaCtrl {
 		TableModel tm = movimentoCaixaDAO.listarCaixa();
 		return tm;
 	}
+	
+	
+	public void inserirLancamento( String valores ) { 
+		
+		MovimentoCaixaDAO movimentoCaixaDAO = new MovimentoCaixaDAO(); 
+		movimentoCaixaDAO.inserir(null);
+		//movimentoCaixaDAO.listarCaixa();
+	
+	}
 
 }

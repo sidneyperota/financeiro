@@ -40,7 +40,7 @@ public class MovimentoCaixaTM extends AbstractTableModel {
 		case 0:
 			return dados.get(linha).getId();
 		case 1:
-			return dados.get(linha).getData();
+			return dados.get(linha).getCaixa().getData(); 
 		case 2:
 			return dados.get(linha).getConta();
 		case 3:
