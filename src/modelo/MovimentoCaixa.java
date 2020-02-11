@@ -39,7 +39,7 @@ public class MovimentoCaixa {
 		return operacao;
 	}
 	public void setOperacao(String operacao) {
-		this.operacao = operacao;
+		this.operacao = ( operacao ).substring(1,1);
 	}
 	public String getHistorico() {
 		return historico;

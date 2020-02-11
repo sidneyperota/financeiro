@@ -1,8 +1,11 @@
 package controle;
 
+import java.util.ArrayList;
+
 import javax.swing.table.TableModel;
 
 import dao.MovimentoCaixaDAO;
+import modelo.MovimentoCaixa;
 
 public class MovimentoCaixaCtrl {
 
@@ -13,11 +16,17 @@ public class MovimentoCaixaCtrl {
 	}
 	
 	
-	public void inserirLancamento( String valores ) { 
+	public void inserirLancamento( ArrayList<String> valores ) { 
 		
 		MovimentoCaixaDAO movimentoCaixaDAO = new MovimentoCaixaDAO(); 
-		movimentoCaixaDAO.inserir(null);
-		//movimentoCaixaDAO.listarCaixa();
+		MovimentoCaixa movimentoCaixa = new MovimentoCaixa(); 
+		movimentoCaixa.getCaixa().setData( valores.get(0) );
+		movimentoCaixa.setOperacao( valores.get(1) );
+		movimentoCaixa.setConta( valores.get(2) );
+		movimentoCaixa.setDoc( valores.get(3) );
+		movimentoCaixa.setHistorico(valores.get(4));
+		movimentoCaixa.setValor( valores.get(5));
+		movimentoCaixaDAO.inserir( movimentoCaixa );
 	
 	}
 

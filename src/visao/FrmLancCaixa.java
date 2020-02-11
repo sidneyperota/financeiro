@@ -11,7 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import javax.swing.SwingConstants;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 import controle.MovimentoCaixaCtrl;
 
@@ -19,14 +22,18 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class FrmLancCaixa extends JInternalFrame {
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txt_doc;
+	private JTextField txt_valor;
 	
 	
 	MovimentoCaixaCtrl movimentoCaixaCtrl; 
+	private JTextField txtConta;
 	
 
 	/**
@@ -66,13 +73,7 @@ public class FrmLancCaixa extends JInternalFrame {
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Salvar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				movimentoCaixaCtrl.inserirLancamento("");
-
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
@@ -88,53 +89,101 @@ public class FrmLancCaixa extends JInternalFrame {
 		getContentPane().add(panel_3, BorderLayout.CENTER);
 		panel_3.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(128, 97, 181, 20);
-		panel_3.add(textField);
-		textField.setColumns(10);
+		txt_doc = new JTextField();
+		txt_doc.setBounds(128, 115, 181, 20);
+		panel_3.add(txt_doc);
+		txt_doc.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(128, 196, 181, 20);
-		panel_3.add(textField_1);
-		textField_1.setColumns(10);
+		txt_valor = new JTextField();
+		txt_valor.setBounds(128, 214, 181, 20);
+		panel_3.add(txt_valor);
+		txt_valor.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Entrada", "Sa\u00EDda"}));
-		comboBox.setBounds(128, 66, 105, 20);
-		panel_3.add(comboBox);
+		JComboBox cb_operacao = new JComboBox();
+		cb_operacao.setModel(new DefaultComboBoxModel(new String[] {"Entrada", "Sa\u00EDda"}));
+		cb_operacao.setBounds(128, 42, 105, 20);
+		panel_3.add(cb_operacao);
 		
 		JLabel lblNewLabel = new JLabel("Opera\u00E7\u00E3o:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(51, 69, 70, 14);
+		lblNewLabel.setBounds(51, 45, 70, 14);
 		panel_3.add(lblNewLabel);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setText("  /  /");
-		formattedTextField.setBounds(128, 35, 105, 20);
-		panel_3.add(formattedTextField);
+		JFormattedTextField fmt_data = new JFormattedTextField();
+		
+		DefaultFormatterFactory dfmt;
+		
+		MaskFormatter msk;
+		try {
+			msk = new MaskFormatter("##/##/####");
+			dfmt = new DefaultFormatterFactory( msk );
+			fmt_data.setFormatterFactory( dfmt );  
+	
+			
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
+		fmt_data.setBounds(128, 11, 105, 20);
+		panel_3.add(fmt_data);
 		
 		JLabel lblData = new JLabel("Data:");
 		lblData.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblData.setBounds(72, 38, 46, 14);
+		lblData.setBounds(72, 14, 46, 14);
 		panel_3.add(lblData);
 		
 		JLabel lblNewLabel_1 = new JLabel("Doc:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setBounds(72, 100, 46, 14);
+		lblNewLabel_1.setBounds(72, 118, 46, 14);
 		panel_3.add(lblNewLabel_1);
 		
 		JLabel lblValor = new JLabel("Valor:");
 		lblValor.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblValor.setBounds(72, 199, 46, 14);
+		lblValor.setBounds(61, 217, 57, 14);
 		panel_3.add(lblValor);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(128, 128, 344, 57);
-		panel_3.add(textArea);
+		JTextArea txt_historico = new JTextArea();
+		txt_historico.setBounds(128, 146, 344, 57);
+		panel_3.add(txt_historico);
 		
 		JLabel lblNewLabel_2 = new JLabel("Hist\u00F3rico:");
-		lblNewLabel_2.setBounds(72, 125, 46, 14);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_2.setBounds(40, 143, 78, 14);
 		panel_3.add(lblNewLabel_2);
+		
+		txtConta = new JTextField();
+		txtConta.setBounds(128, 83, 181, 20);
+		panel_3.add(txtConta);
+		txtConta.setColumns(10);
+		
+		JLabel lblConta = new JLabel("Conta:");
+		lblConta.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblConta.setBounds(75, 86, 46, 14);
+		panel_3.add(lblConta);
+		
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>  aValores = new ArrayList();
+				aValores.add( fmt_data.getText() );
+				aValores.add( (String) cb_operacao.getItemAt( cb_operacao.getSelectedIndex() ) );
+				aValores.add(txtConta.getText());
+				aValores.add( txt_doc.getText() ); 
+				aValores.add( txt_historico.getText() ); 
+				aValores.add( txt_valor.getText() ); 
+				movimentoCaixaCtrl.inserirLancamento( aValores );
+				fmt_data.setText("");
+				txtConta.setText("");
+				txt_doc.setText("");
+				txt_historico.setText("");
+				txt_valor.setText("");
+			}
+		});
+
 
 	}
 }

@@ -20,6 +20,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 
 import modelo.MovimentoCaixa;
 import tebela.MovimentoCaixaTM;
@@ -114,8 +115,20 @@ public class MovimentoCaixaDAO {
 
 		//HttpPost httpPost = new HttpPost("http://www.meuappfinanceiro.com.br/api.php/lancamentocaixa");
 		HttpPost httpPost = new HttpPost("http://localhost:8080/api.php/lancamentocaixa?data=01-01-2020&historico=teste");
+
 		
-		String sJSON = "{id:'1212',descricao:'pago o valor de 50,00 conforme combinado para manutencao}";
+		JSONParser jsonParser = new JSONParser(); 
+		JSONObject jsonObject = new JSONObject(); 
+		
+		jsonObject.put("data", movimentoCaixa.getCaixa().getData() );
+		jsonObject.put("conta", movimentoCaixa.getConta() ); 
+		jsonObject.put("operacao", movimentoCaixa.getOperacao() ); 
+		jsonObject.put("historico", movimentoCaixa.getHistorico() ); 
+		jsonObject.put("valor", movimentoCaixa.getValor() ); 
+		jsonObject.put("usuario", movimentoCaixa.getUsuario() ); 
+		jsonObject.put("doc", movimentoCaixa.getDoc());
+		
+		String sJSON = jsonObject.toJSONString(); 
 		
 		HttpEntity httpEntity = new StringEntity(sJSON, ContentType.APPLICATION_JSON );
 		HttpClient httpclient = HttpClients.createDefault();
