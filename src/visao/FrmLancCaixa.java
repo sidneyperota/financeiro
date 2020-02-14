@@ -125,9 +125,7 @@ public class FrmLancCaixa extends JInternalFrame {
 			e1.printStackTrace();
 		}
 		
-		
-		
-		
+
 		fmt_data.setBounds(128, 11, 105, 20);
 		panel_3.add(fmt_data);
 		
