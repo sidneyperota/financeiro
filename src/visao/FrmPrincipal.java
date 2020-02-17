@@ -44,10 +44,7 @@ public class FrmPrincipal extends JFrame {
 		setExtendedState(MAXIMIZED_BOTH);
 		
 		//setBounds(450, 200, 754, 477);
-		
-		
-		
-		
+
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

@@ -1,4 +1,6 @@
-package modelo; 
+package modelo;
+
+import javax.swing.JOptionPane;
 
 public class MovimentoCaixa {
 	
@@ -39,7 +41,7 @@ public class MovimentoCaixa {
 		return operacao;
 	}
 	public void setOperacao(String operacao) {
-		this.operacao = ( operacao ).substring(1,1);
+		this.operacao = ( operacao ).substring(0,1);
 	}
 	public String getHistorico() {
 		return historico;

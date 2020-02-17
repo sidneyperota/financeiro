@@ -10,23 +10,24 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		
-		
-		/*
 		FrmPrincipal frmPrincipal = new FrmPrincipal(); 
 		frmPrincipal.setVisible(true);
-		*/
+	
 		
+		
+		/*
 		MovimentoCaixaCtrl movimentoCaixaCtrl = new MovimentoCaixaCtrl(); 
 		
 		ArrayList<String>  aValores = new ArrayList();
-		aValores.add( "2020-02-14" );
+		aValores.add( "2019-12-01" );
 		aValores.add( "E" );
-		aValores.add( "121212" );
+		aValores.add( "1212" );
 		aValores.add( "12525" ); 
-		aValores.add( "RECEBIDO VALOR TESTE" ); 
-		aValores.add( "10.00" ); 
+		aValores.add( "PARABENS RECEBIDO COM SUCESSO" ); 
+		aValores.add( "15.00" ); 
+		aValores.add("999");
 		movimentoCaixaCtrl.inserirLancamento( aValores );
-		
+		*/
 		
 	}
 

@@ -26,6 +26,7 @@ public class MovimentoCaixaCtrl {
 		movimentoCaixa.setDoc( valores.get(3) );
 		movimentoCaixa.setHistorico(valores.get(4));
 		movimentoCaixa.setValor( valores.get(5));
+		movimentoCaixa.setUsuario( Integer.valueOf( valores.get(6) ) );
 		movimentoCaixaDAO.inserir( movimentoCaixa );
 	
 	}

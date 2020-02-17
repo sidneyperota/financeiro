@@ -173,6 +173,7 @@ public class FrmLancCaixa extends JInternalFrame {
 				aValores.add( txt_doc.getText() ); 
 				aValores.add( txt_historico.getText() ); 
 				aValores.add( txt_valor.getText() ); 
+				aValores.add("999");
 				movimentoCaixaCtrl.inserirLancamento( aValores );
 				fmt_data.setText("");
 				txtConta.setText("");

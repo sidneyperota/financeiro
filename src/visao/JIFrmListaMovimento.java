@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JFormattedTextField;
+import javax.swing.SwingConstants;
 
 public class JIFrmListaMovimento extends JInternalFrame {
 	private JTable tblMovimento;
@@ -46,23 +48,8 @@ public class JIFrmListaMovimento extends JInternalFrame {
 		setBounds(380, 70, 900, 600);
 		
 		JPanel pnlTopo = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) pnlTopo.getLayout();
-		flowLayout.setVgap(25);
 		getContentPane().add(pnlTopo, BorderLayout.NORTH);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				
-				
-				
-				
-			}
-		});
-		pnlTopo.add(btnNewButton);
+		pnlTopo.setLayout(null);
 		
 		JPanel pnlRodape = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) pnlRodape.getLayout();

@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 import org.apache.http.HttpEntity;
@@ -31,32 +32,41 @@ public class MovimentoCaixaDAO {
 	public TableModel listarCaixa() { 
 		
 		
-		String sCaminho = "http://www.meuappfinanceiro.com.br/api.php";
+		//String sCaminho = "http://www.meuappfinanceiro.com.br/api.php/consultamovimento?data=2019-12-01";
+		String sCaminho = "http://localhost:8080/api.php/consultamovimento"; 
+		
+		
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet( sCaminho );
 		
 		try {
 			
-			
 			HttpResponse response = httpclient.execute( httpget );
 			HttpEntity entity = response.getEntity();
 		    String content = EntityUtils.toString(entity);
-		    
 		    String sLinha = content;
-		    
 		    System.out.print(sLinha);
 		    
 		    List lista = new LinkedList(); 
-	        lista = (List) JSONValue.parse( sLinha );
+	        
+
+		    lista = (List) JSONValue.parse( sLinha );
+		    
+		    if ( lista == null ) { 
+		    	
+		    	JOptionPane.showMessageDialog(null, "Lista vazia");
+		    }
 	        
 	        JSONObject jsonObjeto = null;
+	        
 	        
 	        MovimentoCaixa movimentoCaixa;
 	        MovimentoCaixaTM movimentoCaixaTM = new MovimentoCaixaTM(); 
 	        
+	        System.out.print( lista.toString() ); 
+	        
 	        for ( int i=0; i < lista.size(); i++ ) { 
-		        
-	        	jsonObjeto = (JSONObject) lista.get(i);
+	        	jsonObjeto = (JSONObject) lista.get(i); 
 	        	movimentoCaixa = new MovimentoCaixa(); 
 	        	movimentoCaixa.setId( Integer.parseInt( (String) jsonObjeto.get("id") ) );
 	        	movimentoCaixa.setConta( (String) jsonObjeto.get("conta") );
@@ -66,7 +76,7 @@ public class MovimentoCaixaDAO {
 	        	int iUsuario = Integer.parseInt( (String)  jsonObjeto.get("usuario") );
 	        	movimentoCaixa.setUsuario( iUsuario );
 	        	movimentoCaixa.setValor( (String) jsonObjeto.get("valor") );
-	        	movimentoCaixaTM.addMovimento(movimentoCaixa);
+	        	movimentoCaixaTM.addMovimento( movimentoCaixa );
 	        }  	
 	        
 	        return movimentoCaixaTM; 
@@ -144,7 +154,9 @@ public class MovimentoCaixaDAO {
 
 			Scanner scan = new Scanner( inputStream );
 	        
-	        while( scan.hasNext() ){
+	        
+			
+			while( scan.hasNext() ){
 	            System.out.println( scan.nextLine() );
 	        } 
 			
