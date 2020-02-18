@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
+import com.sun.jna.platform.unix.X11.XClientMessageEvent.Data;
+
 import controle.MovimentoCaixaCtrl;
 
 import javax.swing.JTextArea;
@@ -23,8 +25,12 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
 import java.awt.event.ActionEvent;
 
 public class FrmLancCaixa extends JInternalFrame {
@@ -167,7 +173,24 @@ public class FrmLancCaixa extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String>  aValores = new ArrayList();
-				aValores.add( fmt_data.getText() );
+				
+				
+				Date data = null;
+				String sData = ""; 
+				
+				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+				
+				try {
+					data = formato.parse(fmt_data.getText() );
+					formato.applyPattern("yyyy-MM-dd");
+					sData = formato.format(data); 
+					
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
+				
+				aValores.add( sData );
 				aValores.add( (String) cb_operacao.getItemAt( cb_operacao.getSelectedIndex() ) );
 				aValores.add(txtConta.getText());
 				aValores.add( txt_doc.getText() ); 

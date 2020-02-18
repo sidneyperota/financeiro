@@ -44,23 +44,23 @@ public class JIFrmListaMovimento extends JInternalFrame {
 		
 		setClosable(true);
 		setMaximizable(true);
-		setTitle("Lista de Lan\u00E7amentos do Caixa");
+		setTitle("Lista de Lançamentos do Caixa");
 		setBounds(380, 70, 900, 600);
 		
 		JPanel pnlTopo = new JPanel();
 		getContentPane().add(pnlTopo, BorderLayout.NORTH);
-		pnlTopo.setLayout(null);
-		
-		JPanel pnlRodape = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) pnlRodape.getLayout();
-		flowLayout_1.setVgap(25);
-		getContentPane().add(pnlRodape, BorderLayout.SOUTH);
+		pnlTopo.setLayout(new BorderLayout(10, 40));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		tblMovimento = new JTable();
 		scrollPane.setViewportView(tblMovimento);
+		
+		JPanel pnlRodape = new JPanel();
+		scrollPane.setColumnHeaderView(pnlRodape);
+		
+		
 		
 		atualizarLancamentos(); 
 		

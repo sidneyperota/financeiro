@@ -75,20 +75,13 @@ public class FrmPrincipal extends JFrame {
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		
-		
 		// Evento OnClick do Lancamento de Caixa
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				JIFrmListaMovimento jifFrmListaMovimento = new JIFrmListaMovimento(); 
-
-				
-				jifFrmListaMovimento.setVisible( true );
-				desktopPane.add(jifFrmListaMovimento);
-				
-				
-				
-				
+				JIFrmConsultaMovimento jifrmConsultaMovimento = new JIFrmConsultaMovimento(); 
+				jifrmConsultaMovimento.setVisible( true );
+				desktopPane.add( jifrmConsultaMovimento );
 			}
 		});
 		

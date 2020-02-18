@@ -10,7 +10,7 @@ import modelo.MovimentoCaixa;
 public class MovimentoCaixaTM extends AbstractTableModel {
 
 	private List<MovimentoCaixa> dados;
-	private String[] colunas = { "id", "data", "conta", "operacao", "historico", "valor", "usuario", "doc" };
+	private String[] colunas = { "Id", "Data", "Conta", "Operação", "Histórico", "Valor", "Usuario", "Doc" };
 
 	public MovimentoCaixaTM() {
 		dados = new ArrayList();

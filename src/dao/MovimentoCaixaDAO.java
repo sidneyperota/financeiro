@@ -39,6 +39,8 @@ public class MovimentoCaixaDAO {
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet( sCaminho );
 		
+		MovimentoCaixaTM movimentoCaixaTM = null;
+		
 		try {
 			
 			HttpResponse response = httpclient.execute( httpget );
@@ -59,9 +61,8 @@ public class MovimentoCaixaDAO {
 	        
 	        JSONObject jsonObjeto = null;
 	        
-	        
-	        MovimentoCaixa movimentoCaixa;
-	        MovimentoCaixaTM movimentoCaixaTM = new MovimentoCaixaTM(); 
+	        MovimentoCaixa movimentoCaixa = null;
+	        movimentoCaixaTM = new MovimentoCaixaTM(); 
 	        
 	        System.out.print( lista.toString() ); 
 	        
@@ -91,25 +92,6 @@ public class MovimentoCaixaDAO {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
-		
-		MovimentoCaixaTM movimentoCaixaTM = new MovimentoCaixaTM(); 
-		
-
-		MovimentoCaixa movimentoCaixa = new MovimentoCaixa();
-		
-		movimentoCaixa.setConta("1212");
-		movimentoCaixa.setId(10);
-		//movimentoCaixa.setData("05/02/2019");
-		movimentoCaixa.setDoc("12121");
-		movimentoCaixa.setHistorico("Pago Valor Teste");
-		movimentoCaixa.setOperacao("S");
-		movimentoCaixa.setUsuario(1);
-		movimentoCaixa.setValor("50.0");
-		movimentoCaixaTM.addMovimento(movimentoCaixa);
 		
 		return movimentoCaixaTM; 
 	}
